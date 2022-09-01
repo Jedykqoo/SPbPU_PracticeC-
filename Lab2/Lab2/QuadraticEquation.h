@@ -16,11 +16,14 @@ public:
 		x1 = value_x1;
 		x2 = value_x2;
 	}
-
 	solution() {
 		numberOfRoots = 0;
 		x1 = 0;
 		x2 = 0;
+	}
+
+	bool operator== (const solution& toCompare) {
+		return ((this->x1 == toCompare.x1) && (this->x2 == toCompare.x2));
 	}
 
 private:
@@ -31,7 +34,9 @@ private:
 
 class equation {
 public:
-
+	equation() {
+		a = b = c = 0;
+	}
 	equation(double coef_a, double coef_b, double coef_c) {
 		a = coef_a;
 		b = coef_b;
