@@ -1,11 +1,12 @@
 #include "playground.h"
 
+
 void playground::buildPlayground(){
 	srand(static_cast<unsigned int>(time(0)));
-	playground a;
 	for (int i = 0; i < gem_amount_x; i++) {
 		std::vector <gem> temporary_vector;
 		for (int j = 0; j < gem_amount_y; j++) {
+			std::cout << "buildPlayground()\ni = " << i << "\nj = " << j << std::endl;////////
 			// передавать кол-во цветов 7
 			switch (static_cast<int>(rand() / (static_cast<double>(RAND_MAX) + 1.0) * 7)) {
 			case 0:
@@ -33,5 +34,17 @@ void playground::buildPlayground(){
 		}
 		playground_matrix.push_back(temporary_vector);
 		temporary_vector.clear();
+	}
+}
+
+void playground::printPlayground() {
+	int x, y;
+	for (int i = 0; i < gem_amount_x; i++) {
+		for (int j = 0; j < gem_amount_y; j++) {
+			std::cout << "printPlayground()\ni = " << i << "\nj = " << j << std::endl;////////
+			x = gem_size * i + 25;
+			y = gem_size * j + 25;
+			playground_matrix[i][j].printGem(x, y, window);
+		}
 	}
 }
