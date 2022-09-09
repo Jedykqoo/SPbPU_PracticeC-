@@ -7,12 +7,14 @@
 
 class playground{
 public:
-	playground() {	};
+	//playground() {
+		//win = 
+	//};
 	void buildPlayground();
-	void printPlayground();
+	void printPlayground(sf::RenderWindow* window);
 
 private:
-	sf::RenderWindow window;
+	sf::RenderWindow* win;
 	std::vector< std::vector<gem>> playground_matrix;
 	std::vector<gem> gems;
 	std::vector<sf::Color> colors = { sf::Color::Yellow, sf::Color::Blue, sf::Color::White, sf::Color::Green, sf::Color::Magenta, sf::Color::Cyan , sf::Color::Black};

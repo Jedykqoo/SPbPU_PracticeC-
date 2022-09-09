@@ -1,26 +1,28 @@
 #include "game.h"
 
-game::game(){
-	1 + 5;
+void game::Drow() {
+	window->clear();
+	fild.printPlayground(window);
+
+	window->display();
+}
+
+void game::Update(int elapsed) {
+	sf::Event event;
+	while (window->pollEvent(event)) {
+		if (event.type == sf::Event::Closed)
+			window->close();
+	}
 }
 
 void game::StartGame(){
-	sf::RenderWindow window(sf::VideoMode(500, 500), "Gems");
+	sf::Clock clc;
+	fild.buildPlayground();
+	
+	while (window->isOpen()) {
+		int elapsed = clc.restart().asMilliseconds();
+		Update(elapsed);
 
-	std::cout << "noga" << std::endl;
-
-
-	while (window.isOpen()) {
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear();
-		fild.buildPlayground();
-		fild.printPlayground();
-		window.display();
-
-		1 + 2;
+		Drow();
 	}
 }
