@@ -7,17 +7,15 @@
 
 class playground{
 public:
-	//playground() {
-		//win = 
-	//};
 	void buildPlayground();
 	void printPlayground(sf::RenderWindow* window);
-
+	void GemsSwap(int x1, int y1, int x2, int y2);
+	void RemoveIdenticalNeighbors(int x1, int y1, int x2, int y2);
+	void removeGem(int x, int y, int from_x, int to_x, int from_y, int to_y);
 private:
-	sf::RenderWindow* win;
 	std::vector< std::vector<gem>> playground_matrix;
 	std::vector<gem> gems;
-	std::vector<sf::Color> colors = { sf::Color::Yellow, sf::Color::Blue, sf::Color::White, sf::Color::Green, sf::Color::Magenta, sf::Color::Cyan , sf::Color::Black};
+	std::vector<sf::Color> colors = { sf::Color::Yellow, sf::Color::Blue, sf::Color::White, sf::Color::Green, sf::Color::Magenta, sf::Color::Cyan};
 	int gem_size = 50;
 	int window_size_x = 500;
 	int window_size_y = 500;
