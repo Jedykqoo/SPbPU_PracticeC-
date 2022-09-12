@@ -12,6 +12,17 @@ public:
 	void GemsSwap(int x1, int y1, int x2, int y2);
 	void RemoveIdenticalNeighbors(int x1, int y1, int x2, int y2);
 	void removeGem(int x, int y, int from_x, int to_x, int from_y, int to_y);
+	void rebuild();
+	int GetGemAmountXY(){
+		return gem_amount_x;
+	}
+	bool GemIsEmpty(int i, int j) {
+		if (playground_matrix[i][j].GetColor() == sf::Color::Black)
+			return true;
+		else
+			return false;
+	}
+	void SetColorToOneGem(int x, int y);
 private:
 	std::vector< std::vector<gem>> playground_matrix;
 	std::vector<gem> gems;

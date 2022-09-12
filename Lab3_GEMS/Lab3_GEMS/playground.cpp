@@ -154,6 +154,7 @@ void playground::RemoveIdenticalNeighbors(int x1, int y1, int x2, int y2) {
 
 	if ((abs(left2 - right2) + abs(up2 - down2)) > 0)
 		removeGem(x2, y2, left2, right2, up2, down2);
+
 }
 
 void playground::removeGem(int x, int y, int from_x, int to_x, int from_y, int to_y) {
@@ -162,5 +163,85 @@ void playground::removeGem(int x, int y, int from_x, int to_x, int from_y, int t
 	}
 	for (int j = from_y; j <= to_y; j++) {
 		playground_matrix[x][j].SetColor(sf::Color::Black);
+	}
+}
+
+void playground::rebuild() {	
+	int t = 0;
+	for (int i = 0; i < gem_amount_x; i++) {
+		int tt = 0;
+		for (int j = gem_amount_y - 1; j > 0; j--) {
+			if (playground_matrix[i][j].GetColor() == sf::Color::Black) {
+				tt++;
+				for (int k = j; k > 0; k--) {
+					GemsSwap(i, k, i, k - 1);
+				}
+			}
+		}
+		if (t < tt)
+			t = tt;
+	}
+	while (t > 0) {
+		for (int i = 0; i < gem_amount_x; i++) {
+			for (int j = gem_amount_y - 1; j > 0; j--) {
+				if (playground_matrix[i][j].GetColor() == sf::Color::Black) {
+					t = j;
+					for (int k = j; k > 0; k--) {
+						GemsSwap(i, k, i, k - 1);
+					}
+				}
+			}
+		}
+		t--;
+	}
+
+	for (int i = 0; i < gem_amount_x; i++) {
+		for (int j = 0; j < gem_amount_y; j++) {
+			if (playground_matrix[i][j].GetColor() == sf::Color::Black) {
+				switch (static_cast<int>(rand() / (static_cast<double>(RAND_MAX) + 1.0) * 6)) {
+				case 0:
+					playground_matrix[i][j].SetColor(sf::Color::Yellow);
+					break;
+				case 1:
+					playground_matrix[i][j].SetColor(sf::Color::Blue);
+					break;
+				case 2:
+					playground_matrix[i][j].SetColor(sf::Color::White);
+					break;
+				case 3:
+					playground_matrix[i][j].SetColor(sf::Color::Green);
+					break;
+				case 4:
+					playground_matrix[i][j].SetColor(sf::Color::Magenta);
+					break;
+				case 5:
+					playground_matrix[i][j].SetColor(sf::Color::Cyan);
+					break;
+				}
+			}
+		}
+	}
+}
+
+void playground::SetColorToOneGem(int x, int y) {
+	switch (static_cast<int>(rand() / (static_cast<double>(RAND_MAX) + 1.0) * 6)) {
+	case 0:
+		playground_matrix[x][y].SetColor(sf::Color::Yellow);
+		break;
+	case 1:
+		playground_matrix[x][y].SetColor(sf::Color::Blue);
+		break;
+	case 2:
+		playground_matrix[x][y].SetColor(sf::Color::White);
+		break;
+	case 3:
+		playground_matrix[x][y].SetColor(sf::Color::Green);
+		break;
+	case 4:
+		playground_matrix[x][y].SetColor(sf::Color::Magenta);
+		break;
+	case 5:
+		playground_matrix[x][y].SetColor(sf::Color::Cyan);
+		break;
 	}
 }

@@ -16,6 +16,7 @@ void game::Update(int elapsed) {
 			break;
 		case sf::Event::MouseButtonReleased:
 			MovingGems(event);
+			fild.rebuild();
 			break;
 		}
 	}
