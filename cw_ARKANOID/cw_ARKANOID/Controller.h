@@ -4,7 +4,7 @@
 #include "Platform.h"
 #include "Blocks.h"
 #include "Bonus.h"
-#include "SFML/Graphics.hpp"
+#include "SFML\Graphics.hpp"
 #include <iostream>
 
 using namespace std;

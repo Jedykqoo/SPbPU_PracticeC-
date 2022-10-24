@@ -1,7 +1,7 @@
 #pragma once
 
 #include "field.h"
-#include "SFML\Graphics.hpp"
+#include <SFML\Graphics.hpp>
 
 class Circle : public GameObject, public Drawable {
 protected:

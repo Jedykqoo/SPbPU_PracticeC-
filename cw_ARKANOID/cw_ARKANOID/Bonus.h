@@ -1,7 +1,7 @@
 #pragma once
 #include "Ball.h"
 #include "Blocks.h"
-#include "SFML/Graphics.hpp"
+#include <SFML\Graphics.hpp>
 
 enum BONUS_TYPES{
 	CHANGE_WIDTH_PADDLE,

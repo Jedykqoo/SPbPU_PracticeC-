@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "field.h"
 
 using namespace sf;
@@ -19,7 +19,7 @@ public:
 
 	void update(float winWidth);
 	void IncraseWidth();
-	Vector2f getVelocity();
+	Vector2f getVelocity() { return this->velocity; };
 	void SetDefualtWidth();
 
 	virtual Vector2f getPosition();
